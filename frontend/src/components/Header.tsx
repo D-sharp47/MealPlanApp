@@ -1,48 +1,57 @@
-import { AppBar, Box, Container, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Container,
+  Toolbar,
+  Typography,
+  useTheme,
+  useMediaQuery,
+  IconButton,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import React from "react";
 
 const Header: React.FC = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="sticky">
         <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
+          <Toolbar
+            disableGutters
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              position: "relative",
+            }}
+          >
+            {isSmallScreen && (
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={() => {}}
+                edge="start"
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
+
             <Typography
               variant="h6"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
               sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
                 color: "inherit",
                 textDecoration: "none",
+                position: isSmallScreen ? "absolute" : "relative",
+                left: isSmallScreen ? "50%" : "0",
+                transform: isSmallScreen ? "translateX(-50%)" : "none",
               }}
             >
               MyMeal
-            </Typography>
-
-            {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
-                display: { xs: "flex", md: "none" },
-                flexGrow: 1,
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              LOGO
             </Typography>
           </Toolbar>
         </Container>

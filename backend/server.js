@@ -12,6 +12,7 @@ app.use(
 );
 
 app.use("/api/auth", auth);
+
 app.get("/api/status", (req, res) => {
   res.json({ status: "ok" });
 });

@@ -9,8 +9,8 @@ import {
   Stepper,
   TextField,
   Typography,
-  useTheme,
-  useMediaQuery,
+  // useTheme,
+  // useMediaQuery,
 } from "@mui/material";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -34,8 +34,8 @@ const infoSteps = [
 ];
 
 const Login: React.FC = () => {
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+  // const theme = useTheme();
+  // const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const [status, setStatus] = React.useState(PageStatus.LOGIN);
   const [activeStep, setActiveStep] = React.useState(0);
@@ -187,7 +187,6 @@ const Login: React.FC = () => {
 
   return (
     <GoogleOAuthProvider clientId={CLIENT_ID_GOOGLE}>
-      {isSmallScreen && <>TEST SMALL SCREEN</>}
       {status !== PageStatus.INFO_STEPPER ? (
         <Stack
           direction="column"
